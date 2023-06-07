@@ -18,13 +18,13 @@ elseif ($_GET['module']=='petugas'){
 }
 
 // Bagian Modul
-elseif ($_GET['module']=='modul'){
-  include "modul/mod_modul/modul.php";
+elseif ($_GET['module']=='pengaduan'){
+  include "modul/mod_pengaduan/index.php";
 }
 
 // Bagian Kategori
-elseif ($_GET['module']=='kategori'){
-  include "modul/mod_kategori/kategori.php";
+elseif ($_GET['module']=='tanggapan'){
+  include "modul/mod_tanggapan/index.php";
 }
 
 // Bagian Berita

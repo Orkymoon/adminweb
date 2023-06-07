@@ -15,6 +15,7 @@ if ($module=='masyarakat' AND $act=='hapus'){
 
 // Input 
 elseif ($module=='masyarakat' AND $act=='input'){
+  $password = htmlspecialchars(md5($_POST['password']));
   mysqli_query($conn,"INSERT INTO masyarakat(nik,
                                   nama, 
                                   username,
@@ -23,7 +24,7 @@ elseif ($module=='masyarakat' AND $act=='input'){
 					                VALUES('$_POST[nik]',
 					                       '$_POST[nama]', 
                                  '$_POST[username]',
-                                 '$_POST[password]',
+                                 '$password',
                                  '$_POST[telp]')");
   header('location:../../index.php?module='.$module);
 }

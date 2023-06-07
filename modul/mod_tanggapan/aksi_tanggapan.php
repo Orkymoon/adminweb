@@ -9,7 +9,12 @@ $act = isset($_GET['act']) ? $_GET['act'] : '';
 
 // Hapus 
 if ($module == 'petugas' and $act == 'hapus') {
-    mysqli_query($conn, "DELETE FROM petugas WHERE id_petugas='$_GET[id]'");
+    $foto = $_POST['foto'];
+    $direktori = "src/report/img/";
+
+    unlink($direktori . $foto);
+
+    mysqli_query($conn, "DELETE FROM pengaduan WHERE id_pengaduan = '$_POST[id_pengaduan]'");
     header('location:../../index.php?module=' . $module);
 }
 
