@@ -5,27 +5,16 @@ include "config/fungsi_indotgl.php";
 include "config/fungsi_combobox.php";
 include "config/class_paging.php";
 
-// Bagian Home
-if ($_GET['module']=='home'){
-  echo "<h2>Selamat Datang</h2>
-          <p>Hai <b>$_SESSION[namalengkap]</b>, selamat datang di halaman Administrator website Menitcom.<br> Silahkan klik menu pilihan yang berada 
-          di sebelah kiri untuk mengelola content website. </p>
-          <p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
-          <p align=right>Login : $hari_ini, ";
-  echo tgl_indo(date("Y m d")); 
-  echo " | "; 
-  echo date("H:i:s");
-  echo " WIB</p>";
+
+
+// Bagian User
+if ($_GET['module']=='masyarakat'){
+  include "modul/mod_masyarakat/index.php";
 }
 
 // Bagian User
-elseif ($_GET['module']=='profil'){
-  include "modul/mod_profil/profil.php";
-}
-
-// Bagian User
-elseif ($_GET['module']=='user'){
-  include "modul/mod_users/users.php";
+elseif ($_GET['module']=='petugas'){
+  include "modul/mod_petugas/index.php";
 }
 
 // Bagian Modul

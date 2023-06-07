@@ -1,27 +1,45 @@
-<html>
-<head>
-<title></title>
-<link href="style.css" rel="stylesheet" type="text/css" />
-</head>
-<body>
-<div id="header">
-  <div id="content">
-		<h2>Login</h2>
-    <img src="images/login-welcome.gif" width="97" height="105" hspace="10" align="left">
+<?php
+session_start();
 
-<form method="POST" action="cek_login.php">
-<table>
-<tr><td>Username</td><td> : <input type="text" name="username"></td></tr>
-<tr><td>Password</td><td> : <input type="password" name="password"></td></tr>
-<tr><td colspan="2"><input type="submit" value="Login"></td></tr>
-</table>
-</form>
+if (empty($_SESSION['username']) and empty($_SESSION['password'])) {
+	echo "<link href='style.css' rel='stylesheet' type='text/css'>
+ <center>Untuk mengakses modul, Anda harus login <br>";
+	echo "<a href=login.php><b>LOGIN</b></a></center>";
+	header('refresh: 3; URL=login.php');
+} else {
+?>
 
-<p>&nbsp;</p>
-  </div>
-	<div id="footer">
-			Copyright &copy; 2023 by xxxx All rights reserved.
-	</div>
-</div>
-</body>
-</html>
+	<html>
+	<head>
+		<title></title>
+		<script type="text/javascript" src="../nicEdit.js"></script>
+		<script type="text/javascript">
+			bkLib.onDomLoaded(function() {
+				nicEditors.allTextAreas()
+			});
+		</script>
+		</script>
+		<link href="style.css" rel="stylesheet" type="text/css" />
+	</head>
+
+	<body>
+		<div id="header">
+			<div id="menu">
+				<ul>
+					<?php include "menu.php"; ?>
+					<li><a href=logout.php>&#187; Logout</a></li>
+				</ul>
+				<!-- <p>&nbsp;</p> -->
+			</div>
+			<div id="content">
+				<?php include "content.php"; ?>
+			</div>
+			<div id="footer">
+				Copyright &copy; 2023 Orkymoon All rights reserved.
+			</div>
+		</div>
+	</body>
+	</html>
+<?php
+}
+?>

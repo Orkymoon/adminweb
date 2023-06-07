@@ -2,7 +2,7 @@
 $server = "localhost";
 $username = "root";
 $password = "";
-$database = "db_web";
+$database = "apm";
 
 $conn = mysqli_connect($server, $username, $password, $database);
 //Check connection

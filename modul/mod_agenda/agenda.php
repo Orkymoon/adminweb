@@ -7,20 +7,20 @@ switch(isset($_GET['act']) ? $_GET['act']:''){
           <input type=button value='Tambah Agenda' onclick=location.href='?module=agenda&act=tambahagenda'>
           <table>
           <tr><th>no</th><th>tema</th><th>tgl. mulai</th><th>tgl. selesai</th><th>aksi</th></tr>";
-    if ($_SESSION['leveluser']=='admin'){
-      $tampil=mysqli_query($conn,"SELECT * FROM agenda ORDER BY id_agenda DESC");
+    if ($_SESSION['level']=='admin'){
+      $tampil=mysqli_query($conn,"SELECT * FROM masyarakat ORDER BY id_masyarakat DESC");
     }
     else{
-      $tampil=mysqli_query($conn,"SELECT * FROM agenda 
-                           WHERE username='$_SESSION[namauser]'       
-                           ORDER BY id_agenda DESC");
+      $tampil=mysqli_query($conn,"SELECT * FROM masyarakat 
+                           WHERE username='$_SESSION[username]'       
+                           ORDER BY id_masyarakat DESC");
     }
     $no=1;
     while ($r=mysqli_fetch_array($tampil)){
       $tgl_mulai   = tgl_indo($r['tgl_mulai']);
       $tgl_selesai = tgl_indo($r['tgl_selesai']);
       echo "<tr><td>$no</td>
-                <td width=220>$r[tema]</td>
+                <td width=220>$r[nik]</td>
                 <td>$tgl_mulai</td>
                 <td>$tgl_selesai</td>
                 <td><a href=?module=agenda&act=editagenda&id=$r[id_agenda]>Edit</a> | 
@@ -31,7 +31,7 @@ switch(isset($_GET['act']) ? $_GET['act']:''){
     echo "</table>";
     break;
 
-  
+//   Tambah
   case "tambahagenda":
     echo "<h2>Tambah Agenda</h2>
           <form method=POST action='$aksi?module=agenda&act=input'>
@@ -59,7 +59,7 @@ switch(isset($_GET['act']) ? $_GET['act']:''){
           </form>";
     break;
   
-
+   //   Edit 
   case "editagenda":
     $edit = mysqli_query($conn,"SELECT * FROM agenda WHERE id_agenda='$_GET[id]'");
     $r    = mysqli_fetch_array($edit);
